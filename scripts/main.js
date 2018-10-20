@@ -67,8 +67,34 @@ function loadMessages() {
 //dbRefAmp.remove();
 
 
+}
+
+
+//function to set the temperature limit for the Device
+function setlimitfn(){
+
+  if ((minimumTemperatureValue.value)>0 && (maximumTemperatureValue.value)>0)
+  {
+
+    if((maximumTemperatureValue.value)>(minimumTemperatureValue.value)){
+      alert('minimum = ' + minimumTemperatureValue.value + 'maximum = ' + maximumTemperatureValue.value );
+      firebase.database().ref().child('/sensor2/minimum temperature').set(minimumTemperatureValue.value);
+      firebase.database().ref().child('/sensor2/maximum temperature').set(maximumTemperatureValue.value);
+    }
+      else{
+        alert('pay attention..');
+      }
+    }
+  else{
+    alert('enter values');
+  }
 
 }
+
+
+
+
+
 
 function loadValues(){
 
@@ -258,6 +284,9 @@ checkSetup();
 var temperatureValue = document.getElementById('temperatureValue');
 var voltageValue = document.getElementById('voltageValue');
 var ampValue = document.getElementById('ampValue');
+var minimumTemperatureValue = document.getElementById('minimum-temperature-value');
+var maximumTemperatureValue = document.getElementById('maximum-temperature-value');
+var setlimits = document.getElementById('set-limits');
 var messageListElement = document.getElementById('messages');
 var messageFormElement = document.getElementById('message-form');
 var messageInputElement = document.getElementById('message');
