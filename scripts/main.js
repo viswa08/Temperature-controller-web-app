@@ -72,14 +72,15 @@ function loadMessages() {
 
 //function to set the temperature limit for the Device
 function setlimitfn(){
-
-  if ((minimumTemperatureValue.value)>0 && (maximumTemperatureValue.value)>0)
+  var minValueInt = parseInt(minimumTemperatureValue.value);
+  var maxValueInt = parseInt(maximumTemperatureValue.value);
+  if ((minValueInt)>0 && (maxValueInt)>0)
   {
 
-    if((maximumTemperatureValue.value)>(minimumTemperatureValue.value)){
-      alert('minimum = ' + minimumTemperatureValue.value + 'maximum = ' + maximumTemperatureValue.value );
-      firebase.database().ref().child('/sensor2/minimum temperature').set(minimumTemperatureValue.value);
-      firebase.database().ref().child('/sensor2/maximum temperature').set(maximumTemperatureValue.value);
+    if((maxValueInt)>(minValueInt)){
+      alert('minimum = ' + minValueInt + 'maximum = ' + maxValueInt );
+      firebase.database().ref().child('/sensor2/minimum temperature').set(minValueInt);
+      firebase.database().ref().child('/sensor2/maximum temperature').set(maxValueInt);
     }
       else{
         alert('pay attention..');
