@@ -64,6 +64,7 @@ function loadMessages() {
   dbRefTemperature.on('value', snap => temperatureValue.innerText = snap.val());
   dbRefVoltage.on('value', snap => voltageValue.innerText = snap.val());
   dbRefAmp.on('value', snap => ampValue.innerText = snap.val());
+
 //dbRefAmp.remove();
 
 
@@ -72,13 +73,13 @@ function loadMessages() {
 
 //function to set the temperature limit for the Device
 function setlimitfn(){
-  var minValueInt = parseInt(minimumTemperatureValue.value);
-  var maxValueInt = parseInt(maximumTemperatureValue.value);
+  var minValueInt = parseFloat(minimumTemperatureValue.value);
+  var maxValueInt = parseFloat(maximumTemperatureValue.value);
   if ((minValueInt)>0 && (maxValueInt)>0)
   {
 
     if((maxValueInt)>(minValueInt)){
-      alert('minimum = ' + minValueInt + 'maximum = ' + maxValueInt );
+      alert('minimum = ' + minValueInt + ' maximum = ' + maxValueInt );
       firebase.database().ref().child('/sensor2/minimum temperature').set(minValueInt);
       firebase.database().ref().child('/sensor2/maximum temperature').set(maxValueInt);
     }
