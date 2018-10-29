@@ -58,12 +58,19 @@ function loadMessages() {
   var dbRefTemperature = firebase.database().ref().child('/sensor2/temperature');
   var dbRefVoltage = firebase.database().ref().child('/sensor2/voltage');
   var dbRefAmp = firebase.database().ref().child('/sensor2/Amps');
+
+  var dbRefMinTemp = firebase.database().ref().child('/sensor2/minimum temperature')
+  var dbRefMaxTemp = firebase.database().ref().child('/sensor2/maximum temperature')
   //dbRefTemperature.on('child_added', snap => temperatureValue.innerText = snap.val());
   //dbRefVoltage.on('child_added', snap => voltageValue.innerText = snap.val());
   //dbRefAmp.on('child_added', snap => ampValue.innerText = snap.val());
   dbRefTemperature.on('value', snap => temperatureValue.innerText = snap.val());
   dbRefVoltage.on('value', snap => voltageValue.innerText = snap.val());
   dbRefAmp.on('value', snap => ampValue.innerText = snap.val());
+
+
+  dbRefMinTemp.on('value', snap => minimumTemperatureValue.value = snap.val());
+  dbRefMaxTemp.on('value', snap => maximumTemperatureValue.value = snap.val());
 
 //dbRefAmp.remove();
 
@@ -288,6 +295,8 @@ var voltageValue = document.getElementById('voltageValue');
 var ampValue = document.getElementById('ampValue');
 var minimumTemperatureValue = document.getElementById('minimum-temperature-value');
 var maximumTemperatureValue = document.getElementById('maximum-temperature-value');
+var minimumTemperatureDisplay = document.getElementById('minTempDisplay');
+var maximumTemperatureDisplay = document.getElementById('maxTempDisplay');
 var setlimits = document.getElementById('set-limits');
 var messageListElement = document.getElementById('messages');
 var messageFormElement = document.getElementById('message-form');
