@@ -56,7 +56,8 @@
   <div class="mdl-layout__drawer demo-drawer">
     <span class="mdl-layout-title">Options</span>
     <nav class="mdl-navigation demo-navigation">
-      <a class="mdl-navigation__link" href="index.html">Values</a>
+      <a class="mdl-navigation__link" href="index.html">Sensor 1</a>
+      <a class="mdl-navigation__link" href="index2.html">Sensor 2</a>
       <a class="mdl-navigation__link" href="chart.html">Chart</a>
     </nav>
   </div>
@@ -116,18 +117,33 @@
 
               <table>
                 <tr>
-                  <th><h5>Minimum Temperature<h5></th>
-                  <th><h5>Maximum Temperature<h5></th>
+                  <th><h5>Set Min Temperature<h5></th>
+                  <th><h5>Set Max Temperature<h5></th>
                 </tr>
                 <tr>
                   <td> <input class ="mdl-textfield__input" type="number" id="minimum-temperature-value"></td>
                   <td> <input class ="mdl-textfield__input" type="number" id="maximum-temperature-value"></td>
-
                 </tr>
               </table>
+
+
+
+
               <div align="center">
               <button id="set-limits" onclick="setlimitfn()"class="mdl-button mdl-button--raised" >Set Limits</button>
             </div>
+
+            <table>
+              <tr>
+                <th><h5>Minimum Temperature<h5></th>
+                <th><h5>Maximum Temperature<h5></th>
+              </tr>
+              <tr>
+                <td> <h5 id="minTempDisplay">Value<h5></td>
+                <td> <h5 id="maxTempDisplay">Value<h5></td>
+
+              </tr>
+            </table>
 
             </div>
             <span id="message-filler"></span>

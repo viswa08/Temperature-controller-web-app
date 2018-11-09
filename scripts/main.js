@@ -55,12 +55,12 @@ function isUserSignedIn() {
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
   // TODO 7: Load and listens for new messages.
-  var dbRefTemperature = firebase.database().ref().child('/sensor2/temperature');
-  var dbRefVoltage = firebase.database().ref().child('/sensor2/voltage');
-  var dbRefAmp = firebase.database().ref().child('/sensor2/Amps');
+  var dbRefTemperature = firebase.database().ref().child('/sensor1/temperature');
+  var dbRefVoltage = firebase.database().ref().child('/sensor1/voltage');
+  var dbRefAmp = firebase.database().ref().child('/sensor1/Amps');
 
-  var dbRefMinTemp = firebase.database().ref().child('/sensor2/minimum temperature')
-  var dbRefMaxTemp = firebase.database().ref().child('/sensor2/maximum temperature')
+  var dbRefMinTemp = firebase.database().ref().child('/sensor1/minimum temperature')
+  var dbRefMaxTemp = firebase.database().ref().child('/sensor1/maximum temperature')
   //dbRefTemperature.on('child_added', snap => temperatureValue.innerText = snap.val());
   //dbRefVoltage.on('child_added', snap => voltageValue.innerText = snap.val());
   //dbRefAmp.on('child_added', snap => ampValue.innerText = snap.val());
@@ -69,11 +69,14 @@ function loadMessages() {
   dbRefAmp.on('value', snap => ampValue.innerText = snap.val());
 
 
-  dbRefMinTemp.on('value', snap => minimumTemperatureValue.value = snap.val());
-  dbRefMaxTemp.on('value', snap => maximumTemperatureValue.value = snap.val());
+  dbRefMinTemp.on('value', snap => minimumTemperatureDisplay.innerText = snap.val());
+  dbRefMaxTemp.on('value', snap => maximumTemperatureDisplay.innerText = snap.val());
 
 //dbRefAmp.remove();
+  //sensor1 getting Values
+  //var dbRefS1Temp = firebase.database().ref().child('/sensor1/temperature');
 
+  //dbRefTemperature.on('value', snap => s1TemperatureValue.innerText = snap.val());
 
 }
 
@@ -87,8 +90,8 @@ function setlimitfn(){
 
     if((maxValueInt)>(minValueInt)){
       alert('minimum = ' + minValueInt + ' maximum = ' + maxValueInt );
-      firebase.database().ref().child('/sensor2/minimum temperature').set(minValueInt);
-      firebase.database().ref().child('/sensor2/maximum temperature').set(maxValueInt);
+      firebase.database().ref().child('/sensor1/minimum temperature').set(minValueInt);
+      firebase.database().ref().child('/sensor1/maximum temperature').set(maxValueInt);
     }
       else{
         alert('pay attention..');
@@ -310,6 +313,9 @@ var userNameElement = document.getElementById('user-name');
 var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
+
+//DOM for sensor1
+//var s1TemperatureValue = document.getElementById('temperatureValue');
 
 // Saves message on form submit.
 messageFormElement.addEventListener('submit', onMessageFormSubmit);
